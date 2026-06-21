@@ -1,85 +1,8 @@
-```html
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Date Proposal ❤️</title>
-
-<style>
-body{
-    margin:0;
-    overflow:hidden;
-    font-family:Arial;
-    background:linear-gradient(135deg,#200020,#ff4d6d);
-    color:white;
-}
-
-.page{
-    width:100%;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.hidden{
-    display:none;
-}
-
-input,select{
-    padding:10px;
-    width:220px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-}
-
-button{
-    padding:15px 30px;
-    border:none;
-    border-radius:30px;
-    font-size:20px;
-    cursor:pointer;
-    margin:10px;
-}
-
-#yesBtn,#enterBtn{
-    background:#ff4d6d;
-    color:white;
-}
-
-#noBtn{
-    position:absolute;
-    background:red;
-    color:white;
-}
-
-.heart{
-    position:absolute;
-    font-size:25px;
-    animation:float 6s linear infinite;
-}
-
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-100px);
-        opacity:0;
-    }
-}
-</style>
-</head>
-
-<body>
+<audio id="loveMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <div id="welcome" class="page">
-
     <h1>Welcome ❤️</h1>
 
     <input type="text" id="girlName" placeholder="Enter your name">
@@ -97,16 +20,21 @@ button{
     <button id="enterBtn">
         Continue ❤️
     </button>
-
 </div>
 
 <div id="malePage" class="page hidden">
 
-    <h1>Oops 😄</h1>
+    <h1>MISSION FAILED 😂</h1>
 
     <h2>
-        This page is specially made for girls ❤️
+        Sorry bro, this page is not for you.
     </h2>
+
+    <br>
+
+    <video width="350" controls autoplay>
+        <source src="mission.mp4" type="video/mp4">
+    </video>
 
 </div>
 
@@ -137,24 +65,24 @@ button{
 <div id="thanks" class="page hidden">
 
     <h1 id="thanksName">
-        Thank you ❤️
+        Thank You ❤️
     </h1>
 
     <h2>
-        Thank you for accepting my date proposal.
+        Thank you for accepting my proposal.
     </h2>
 
     <br><br>
 
+    <a href="https://instagram.com/who.is_sabbirr"
+       target="_blank">
 
-<a href="https://instagram.com/who.is_sabbirr"
-   target="_blank">
+        <button>
+            Message Me On Instagram ❤️
+        </button>
 
-    <button>
-        Message Me On Instagram ❤️
-    </button>
+    </a>
 
-</a>
 </div>
 
 <script>
@@ -170,13 +98,21 @@ const malePage = document.getElementById("malePage");
 
 const showName = document.getElementById("showName");
 
+const loveMusic =
+document.getElementById("loveMusic");
+
 enterBtn.onclick = function(){
 
     const name =
-        document.getElementById("girlName").value;
+    document.getElementById("girlName").value;
 
     const gender =
-        document.getElementById("gender").value;
+    document.getElementById("gender").value;
+
+    if(name === "" || gender === ""){
+        alert("Please enter name and gender.");
+        return;
+    }
 
     if(gender === "male"){
 
@@ -185,16 +121,13 @@ enterBtn.onclick = function(){
         return;
     }
 
-    if(name === "" || gender === ""){
-        alert("Please enter your name and gender.");
-        return;
-    }
+    loveMusic.play().catch(()=>{});
 
     showName.innerText = name;
 
     document.getElementById("thanksName")
     .innerText =
-    "Thank you " + name + " ❤️";
+    "Thank You " + name + " ❤️";
 
     welcome.classList.add("hidden");
     proposal.classList.remove("hidden");
@@ -231,29 +164,4 @@ yesBtn.onclick = function(){
     thanks.classList.remove("hidden");
 };
 
-function createHeart(){
-
-    const heart =
-    document.createElement("div");
-
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-
-    heart.style.left =
-    Math.random() *
-    window.innerWidth + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(function(){
-        heart.remove();
-    },6000);
-}
-
-setInterval(createHeart,300);
-
 </script>
-
-</body>
-</html>
-```
