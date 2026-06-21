@@ -1,0 +1,259 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Proposal ❤️</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial;
+    background:linear-gradient(135deg,#200020,#ff4d6d);
+    color:white;
+}
+
+.page{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hidden{
+    display:none;
+}
+
+input,select{
+    padding:10px;
+    width:220px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    font-size:20px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#yesBtn,#enterBtn{
+    background:#ff4d6d;
+    color:white;
+}
+
+#noBtn{
+    position:absolute;
+    background:red;
+    color:white;
+}
+
+.heart{
+    position:absolute;
+    font-size:25px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="welcome" class="page">
+
+    <h1>Welcome ❤️</h1>
+
+    <input type="text" id="girlName" placeholder="Enter your name">
+
+    <br><br>
+
+    <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+    </select>
+
+    <br><br>
+
+    <button id="enterBtn">
+        Continue ❤️
+    </button>
+
+</div>
+
+<div id="malePage" class="page hidden">
+
+    <h1>Oops 😄</h1>
+
+    <h2>
+        This page is specially made for girls ❤️
+    </h2>
+
+</div>
+
+<div id="proposal" class="page hidden">
+
+    <h1>
+        I Like You
+        <span id="showName"></span>
+        ❤️
+    </h1>
+
+    <h2>
+        Will you go on a date with me?
+    </h2>
+
+    <br>
+
+    <button id="yesBtn">
+        Yes ❤️
+    </button>
+
+    <button id="noBtn">
+        No 😢
+    </button>
+
+</div>
+
+<div id="thanks" class="page hidden">
+
+    <h1 id="thanksName">
+        Thank you ❤️
+    </h1>
+
+    <h2>
+        Thank you for accepting my date proposal.
+    </h2>
+
+    <br><br>
+
+
+<a href="https://instagram.com/who.is_sabbirr"
+   target="_blank">
+
+    <button>
+        Message Me On Instagram ❤️
+    </button>
+
+</a>
+</div>
+
+<script>
+
+const enterBtn = document.getElementById("enterBtn");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+const welcome = document.getElementById("welcome");
+const proposal = document.getElementById("proposal");
+const thanks = document.getElementById("thanks");
+const malePage = document.getElementById("malePage");
+
+const showName = document.getElementById("showName");
+
+enterBtn.onclick = function(){
+
+    const name =
+        document.getElementById("girlName").value;
+
+    const gender =
+        document.getElementById("gender").value;
+
+    if(gender === "male"){
+
+        welcome.classList.add("hidden");
+        malePage.classList.remove("hidden");
+        return;
+    }
+
+    if(name === "" || gender === ""){
+        alert("Please enter your name and gender.");
+        return;
+    }
+
+    showName.innerText = name;
+
+    document.getElementById("thanksName")
+    .innerText =
+    "Thank you " + name + " ❤️";
+
+    welcome.classList.add("hidden");
+    proposal.classList.remove("hidden");
+};
+
+document.addEventListener("mousemove", function(e){
+
+    const rect = noBtn.getBoundingClientRect();
+
+    const dx =
+    e.clientX - (rect.left + rect.width/2);
+
+    const dy =
+    e.clientY - (rect.top + rect.height/2);
+
+    const distance =
+    Math.sqrt(dx*dx + dy*dy);
+
+    if(distance < 150){
+
+        noBtn.style.left =
+        Math.random() *
+        (window.innerWidth - 100) + "px";
+
+        noBtn.style.top =
+        Math.random() *
+        (window.innerHeight - 60) + "px";
+    }
+});
+
+yesBtn.onclick = function(){
+
+    proposal.classList.add("hidden");
+    thanks.classList.remove("hidden");
+};
+
+function createHeart(){
+
+    const heart =
+    document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left =
+    Math.random() *
+    window.innerWidth + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
+```
