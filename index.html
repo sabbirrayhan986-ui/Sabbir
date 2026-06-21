@@ -1,9 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabbir ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#1a001a,#ff4d6d);
+    color:white;
+    height:100vh;
+}
+
+.page{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hidden{
+    display:none;
+}
+
+input,select{
+    padding:12px;
+    width:250px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    font-size:20px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#enterBtn,#yesBtn{
+    background:#ff4d6d;
+    color:white;
+}
+
+#noBtn{
+    position:absolute;
+    background:red;
+    color:white;
+}
+
+.heart{
+    position:absolute;
+    font-size:25px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
 <audio id="loveMusic" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <div id="welcome" class="page">
     <h1>Welcome ❤️</h1>
+
+    <br>
 
     <input type="text" id="girlName" placeholder="Enter your name">
 
@@ -23,7 +111,6 @@
 </div>
 
 <div id="malePage" class="page hidden">
-
     <h1>MISSION FAILED 😂</h1>
 
     <h2>
@@ -35,16 +122,16 @@
     <video width="350" controls autoplay>
         <source src="mission.mp4" type="video/mp4">
     </video>
-
 </div>
 
 <div id="proposal" class="page hidden">
-
     <h1>
         I Like You
         <span id="showName"></span>
         ❤️
     </h1>
+
+    <br>
 
     <h2>
         Will you go on a date with me?
@@ -59,14 +146,14 @@
     <button id="noBtn">
         No 😢
     </button>
-
 </div>
 
 <div id="thanks" class="page hidden">
-
     <h1 id="thanksName">
         Thank You ❤️
     </h1>
+
+    <br>
 
     <h2>
         Thank you for accepting my proposal.
@@ -76,13 +163,10 @@
 
     <a href="https://instagram.com/who.is_sabbirr"
        target="_blank">
-
         <button>
             Message Me On Instagram ❤️
         </button>
-
     </a>
-
 </div>
 
 <script>
@@ -115,7 +199,6 @@ enterBtn.onclick = function(){
     }
 
     if(gender === "male"){
-
         welcome.classList.add("hidden");
         malePage.classList.remove("hidden");
         return;
@@ -164,4 +247,26 @@ yesBtn.onclick = function(){
     thanks.classList.remove("hidden");
 };
 
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left =
+    Math.random() * window.innerWidth + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,300);
+
 </script>
+
+</body>
+</html>
