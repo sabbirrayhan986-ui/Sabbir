@@ -188,32 +188,27 @@ const missionVideo =
 document.getElementById("missionVideo");
 enterBtn.onclick = function(){
 
-    const name =
-    document.getElementById("girlName").value;
+const name =
+document.getElementById("girlName").value;
 
-    const gender =
-    document.getElementById("gender").value;
+const gender =
+document.getElementById("gender").value;
 
-    if(name === "" || gender === ""){
-        alert("Please enter name and gender.");
-        return;
-    }
+if(name === "" || gender === ""){
+    alert("Please enter name and gender.");
+    return;
+}
+
 if(gender === "male"){
 
     welcome.classList.add("hidden");
     malePage.classList.remove("hidden");
 
-    document.getElementById("videoContainer").innerHTML =
-    `
-    <video width="350" controls autoplay>
-        <source src="mission.mp4" type="video/mp4">
-    </video>
-    `;
+    missionVideo.currentTime = 0;
+    missionVideo.play().catch(()=>{});
 
     return;
 }
-}
-    }
 
     loveMusic.play().catch(()=>{});
 
