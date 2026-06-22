@@ -119,9 +119,7 @@ button{
 
     <br>
 
-<video id="missionVideo" width="350" controls preload="none">
-    <source src="mission.mp4" type="video/mp4">
-</video>
+<div id="videoContainer"></div>
 </div>
 
 <div id="proposal" class="page hidden">
@@ -198,15 +196,20 @@ enterBtn.onclick = function(){
         alert("Please enter name and gender.");
         return;
     }
-
-    if(gender === "male"){
+if(gender === "male"){
 
     welcome.classList.add("hidden");
     malePage.classList.remove("hidden");
 
-    missionVideo.play().catch(()=>{});
+    document.getElementById("videoContainer").innerHTML =
+    `
+    <video width="350" controls autoplay>
+        <source src="mission.mp4" type="video/mp4">
+    </video>
+    `;
 
     return;
+}
 }
     }
 
